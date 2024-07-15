@@ -1,0 +1,106 @@
+JOINS---------------------->
+
+1.CROSS JOIN
+2.INNER JOIN
+3.OUTER JOIN
+   i -Left Outer join
+   ii -Right Outer join
+   iii -Full Outer Join
+4.NATURAL JOIN
+5.SELF JOIN
+
+1. CROSS JOIN / CARTESIAN JOIN-->
+In cross join all the records of table 1 will be merged with all the records of tble.
+
+SYNTAX:-
+select column_name
+from TN1,TN2;
+
+2. INNER JOIN / EQUI JOIN:-->
+It is used to obtain only the matched records.
+In inner join condition is mandatory
+
+SYNTAX:-
+selct column_name
+from TN1 inner join TN2
+ON <join condition>
+where <filter condition>
+
+3. OUTER JOIN:-->
+It is used to obtain the unmatched records along with the matched records.
+
+(i) LEFT OUTER JOIN:-->
+It is used to obtain the unmatched records of the left table along with the matched records.
+
+SYNTAX:-
+slect column_name
+from TN1 left join TN2
+ON <join condition>
+
+(ii) RIGHT OUTER JOIN:-->
+It is used to obtain the unmatched records of the right table along with the matched records.
+
+SYNTAX:-
+select column_name
+from TN1 right join TN2
+ON <join condition>
+
+(iii) FULL OUTER JOIN:-->
+It is used to obtain the unmatched records of the both the tabe along with the matched records.
+
+SYNTAX:-
+select column_name
+from TN1 full join TN2
+ON <join condition>
+
+4. NATURAL JOIN:-->
+It has two behaviours it behaves like a cartesian join when there is no relation between the table.
+It behave like inner join when there is a relation between the table.
+
+SYNTAX:-
+selct column_name
+from TN1 natural join TN2;
+
+5. SELF JOIN:-->
+Joining the table by itself or joining the same table is known as self join.
+WHY:-Whenever the data we want to selct is present in the same column but in differenece records we use self join.
+
+SYNTAX:-
+select column_name
+from TN T1 join TN T2
+ON <join condition>
+
+-------------------------------------------------------------------------------------------------------------
+QUESTIONS:
+1.WAQTD ALL EMPLOYEE NAMES WITH DEPARTMENT NAMES USING CROSS JOIN?
+SELECT ename,dname
+FROM employee CROSS JOIN department;
+
+2.WAQTD ENAME,SAL,HIREDATE AND LOC OF THE EMP WORKING IN THE SALES DEPT.(INNER JOIN)
+SELECT ename,sal,hiredate,loc
+FROM employee inner join department
+ON employee.deptno=department.deptno
+WHERE dname='SALES';
+
+3.WAQTD DETAILS OF THE employees
+LEFT OUTER JOIN:-SELECT *
+                FROM employee LEFT JOIN department
+                ON employee.deptno=department.deptno;
+
+RIGHT OUTER JOIN:-SELECT *
+                  FROM employee RIGHT JOIN department
+                  ON employee.deptno=department.deptno;
+
+FULL OUTER JOIN:-SELECT *
+                 FROM employee FULL JOIN department
+                 ON employee.deptno=department.deptno;
+
+4.NATURAL JOIN:-SELECT *
+                FROM employee NATURAL JOIN department;
+
+5.WAQTD ename,mgr name of all the employee.
+
+SELECT e1.ename,e2.ename
+FROM employee AS e1 JOIN employee AS e2
+ON e1.mgr=e2.empno;
+
